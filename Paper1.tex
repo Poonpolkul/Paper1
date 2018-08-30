@@ -1,0 +1,320 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx} % Allows including images
+\usepackage{amssymb}
+\usepackage{autobreak}
+\usepackage{apacite}
+\usepackage{natbib}
+\usepackage{bbold}
+\usepackage{hyperref}
+\usepackage{color}
+\geometry{
+	a4paper,
+	left=25mm,
+	top=20mm,
+}
+\usepackage{enumitem}
+
+%opening
+\title{Demographic Changes and Asset Allocations}
+\author{Larry Weifeng Liu and Phitawat Poonpolkul}
+\date{\today}
+
+\begin{document}
+	
+\maketitle
+
+\section{Introduction}
+Empirical studies show that asset allocations display strong life-cycle features. For example, \cite{fagereng2017asset} show that as households are aging, they adjust their portfolio allocations away from risky assets to risk-free assets based on a large sample of Norwegian households. Likewise, \cite{poterba2004impact} presents empirical evidence from the US data that financial assets of households increase sharply in their 30s and 40s but decline gradually after retirement. \cite{campanale2009life} shows two empirical facts of household portfolio choices: One is that the stock participation rate is hump-shaped over the life cycle and the other is that conditional share of stock does not change much over the life cycle. Similarly, \cite{gomes2008optimal} suggest that younger households prefer equities, with their shares declining when they get older. \cite{smetters2010optimal} study how households allocate between risk-free and risky asset over their lifetime. Cwik (2015) explores distributional effects of monetary policy in an overlapping generation model. \cite{quayes2016impact} shows that the US stock prices are positively correlated with the proportion of prime earning age population and negatively affected by the proportion of retirees.
+
+The expected utility with constant relative risk aversion (CRRA) has been widely used in the consumption-savings literature (Brock and Mirman 1972). This utility function ties the elasticity of intertemporal substitution (EIS) to the inverse of the coefficient of relative risk aversion. However, it has been shown that the EIS and the risk aversion are fundamentally different and have different effects on consumption decisions. Epstein and Zin (1989) and Weil (1990), who build on Kreps and Porteous (1978), allows distinction between the EIS and the risk aversion by introducing recursive utility functions. This paper follows Bauerle and Jaskiewicz (2018) to introduce a certain type of recursive preferences which allows for separable addition over time but distinguishes the EIS and the risk aversion. 
+
+Allow lower fertility, lower mortality and longer expectancy in demographics to reflect population aging, and also disentangle their effects respectively.
+
+
+\section{The Model}
+
+\subsection{Demographics}
+
+Time is discrete and goes forever, i.e., $t =0,1,2,...$ . In each period $t$, new cohort is born with actual age of 21, denoted by $s=1$. The size of new cohort at $t=0, {N_{1,0}}$ is normalized to 1 and grows at rate $n_t$ for $t = 1,2,3,...$ such that $N_{1,t+1} = (1+n_t)N_{1,t}$.
+
+Each existing generation moves forward by one period and lives up to $T=80$ periods or actual age of 100. In the first $T^W=40$ periods (corresponding to 21-60 years old in the real life), this generation is working, while in the last $T^R=40$ periods (corresponding to 61-100 years old in the real life), this generation retires and receives pensions.
+
+Each cohort survives to the next period with a probability of $\xi_{s,t}$ (where $1-\xi_{s,t}$ represents the probability of death of cohort $s$ at time $t$)($\xi_{s,t}=1$ at the moment). All retirees die at age $T$ if they survive until age $T$. We  compare two cases (the baseline case and the aging case) to show the aging effects. The two cases therefore differ in population growth and mortality rates.
+
+Agents are heterogeneous in their labour productivity denoted by $e(s,j)$. On the one hand, labour productivity depends on their age $s$. All agents become more productive when they get older until they retire. On the other hand, labour productivity is also heterogeneous within each generation, depending on their productivity type $j\in \{1,...,n\}$. The productivity type of each agent is determined at birth, and is not changed over their life time. The mass of agents with productivity type $j$ in each generation is uniformly distributed. We assume agents have no bequest motives and they cannot die with debt. 
+
+\subsection{Timing of events}
+The timing of events in this economy is as follows:
+\begin{enumerate}
+	\item At the beginning of each period, households hold bonds and capital stock (through either their own decisions from last period or their endowments for new generations), and are faced with the rate of return on bonds, and the expected rate of return on capital.
+	\item Productivity shocks occur.
+	\item Workers supply labour and firms hire labor.
+	\item Production starts. 
+	\item At the end of each period, workers receive bonds income, capital income and labour income, and pay wage taxes, while retirees receive bonds income, capital income and pensions. All households decide how to allocate resources to consumption, bonds and capital. 
+\end{enumerate}
+
+\subsection{Households}
+\subsubsection{Preferences}
+The period utility function of household age $s$ with productivity type $j$ in period $t$ is given by
+\begin{equation}
+u\left(c^{s,j}_t,1-l^{s,j}_t\right)=\frac{(c^{s,j}_t)^{1-\sigma}}{1-\sigma}+\phi \frac{(1-l^{s,j}_t)^{1-\eta}}{1-\eta}
+\end{equation}
+where $c^{s,j}_t$ and $l^{s,j}_t$ are consumption and labor of cohort $s$ with productivity type $j$ in period $t$. $\sigma$ and $\eta$ represent degrees of relative risk aversion of consumption and leisure respectively and $\phi$ is a taste preference parameter of leisure.
+
+Following Bauerle and Jaskiewicz (2018), we consider the following recursive preference.
+\begin{equation}
+	U_t=u(c_t,{1-l}_t) - {\frac{\beta}{\gamma}}\ln E_t(e^{{-\gamma}{U_{t+1}}})
+\end{equation}
+where $0<\beta<1$ is the subjective discount factor and $\gamma\geq 0$ is the risk sensitive coefficient which captures the degree of risk aversion in future utility. In the special case of $\gamma=0$, the consumer is risk-neutral in the future and the utility is degenerated to the normal time-additive function as
+\begin{equation}
+U_t=u(c_t,{1-l}_t) + \beta E_t(U_{t+1})
+\end{equation}
+
+\subsubsection{Budget constraints}
+At the beginning of period $t$, a new generation of households is born without capital, $k_t^{1,j}=0$, but they can borrow from a bonds market. Existing agents of age $2\leq s\leq T$ with productivity type $j$ hold risk-free bonds $b_{t}^{s,j}$ and risky capital stock $k_{t}^{s,j}$ which are carried over from last period. 
+
+In each period, households of age $s\leq T^W$ supply labour in a competitive labour market given their labour productivity, and pay labour income taxes at a rate $\tau_t$, while households of age $T^W<s\leq T$ completely retire but they receive pensions from the government. All households can borrow and lend risk-free bonds whose net supply is zero in a competitive bonds market, and receive bonds income each period. Besides, all households can invest capital whose net supply is positive and rent capital to firms for production, and receive capital income while capital depreciates at a constant rate $\delta$ each period.  
+
+At the end of each period, the wealth of each household includes bonds (bonds and their returns) and capital (capital returns plus undepreciated capital). Moreover, workers receive after-tax income while retirees receive pensions. 
+
+Households face a transaction cost of $\varphi(k_{t}^{s,j}-k_{t-1}^{s-1,j})$ when they change the level of asset holding (Cwik et al, 2015) which allows the model to capture an empirically realistic capital distribution. [NB: depending on our result, we could later adjust this transaction cost to be more realistic as in \cite{fagereng2017asset} ]. Households of age $s$ with productivity type $j$ then decide how to allocate their wealth on consumption $c_{t}^{s,j}$, next-period bonds $b_{t+1}^{s+1,j}$, and next-period capital $k_{t+1}^{s+1,j}$. 
+
+Given this setup, the budget constraint for workers of age $s=1,..., T^W$ with productivity type $j$ is
+\begin{equation}
+\begin{split} 
+c_{t}^{s,j}+ b_{t+1}^{s+1,j} + k_{t+1}^{s+1,j}=&
+(1+r_t^b)b_{t}^{s,j}+r_t^k k_{t}^{s,j}+(1-\delta)k_{t}^{s,j}\\
+&+(1-\tau_t)w_te(s,j)l_{t}^{s,j}-\varphi(k_{t+1}^{s+1,j}-k_{t}^{s,j}) \label{eq:15}
+\end{split}
+\end{equation}
+The budget constraint for retirees of age $s=T^W+1,...,T$ is 
+\begin{equation}
+\begin{split} 
+c_{t}^{s,j}+ b_{t+1}^{s+1,j} + k_{t+1}^{s+1,j}=
+(1+r_t^b)b_{t}^{s,j}
++r_t^k k_{t}^{s,j}+(1-\delta)k_{t}^{s,j}+pen_t-\varphi(k_{t+1}^{s+1,j}-k_{t}^{s,j}) \label{eq:16}
+\end{split}
+\end{equation}
+
+\subsubsection{Household problem}
+Denote by $z_t$ the set of state variables in period $t$ as
+\[ z_t=\{s, j, b_t, k_t, A_t\} \]
+where $A_t$ is the aggregate productivity parameter in the production sector. 
+
+We can set up the Bellman equation as
+\begin{equation}
+\begin{split}	
+&V_t^{s,j}(z_t) = \max_{\{c_{t}^{s,j},l_{t}^{s,j}, b_{t+1}^{s+1,j}, k_{t+1}^{s+1,j}\}}\left(u(c_{t}^{s,j},{1-l}_{t}^{s,j}) - {\frac{\beta}{\gamma}}\ln E_t\left(e^{{-\gamma}{V_{t+1}^{s+1,j}(z_{t+1})}}\right)\right)\\
+\end{split} \label{Bellman}
+\end{equation}
+subject to the budget constraints (\ref{eq:15})-(\ref{eq:16}), where $V_t^{s,j}$ denotes the value function of an household of age $s$ with productivity type $j$ in period $t$. 
+
+We write the Lagrangian of the household as 
+\begin{equation}
+\begin{split}	
+\mathcal{L} =& \frac{(c_{t}^{s,j})^{1-\sigma}}{1-\sigma}+\mathbb{1}_{W}\phi \frac{(1-l_{t}^{s,j})^{1-\eta}}{1-\eta}-{\frac{\beta}{\gamma}}\ln E_t\left(e^{{-\gamma}{V_{t+1}(z_{t+1})}}\right)\\
+&+\lambda\Big((1+r_t^b)b_{t}^{s,j}+r_t^k k_{t}^{s,j}+(1-\delta)k_{t}^{s,j}+\mathbb{1}_{W}(1-\tau_t)w_te(s,j)l_{t}^{s,j}\\
+&+(1-\mathbb{1}_{W})pen_t-\varphi(k_{t+1}^{s+1,j}-k_{t}^{s,j})-c_{t}^{s,j}- b_{t+1}^{s+1,j} - k_{t+1}^{s+1,j}\Big) \label{eq:14}
+\end{split}
+\end{equation}
+where $\mathbb{1}_{W}$ is an indicator function for workers, i.e., $\mathbb{1}_{W}$ takes 1 if $s=1,...,T^W$ and 0 otherwise.
+
+We derive the first-order conditions as follows. For workers of age $s=1,2,...,T^{W}$, the first-order conditions with respect to $c_t, l_t, b_{t+1}, k_{t+1}$ are respectively
+\begin{equation}
+(c_{t}^{s,j})^{-\sigma} = \lambda \label{eq:1}
+\end{equation}
+\begin{equation}
+\phi(1-l_{t}^{s,j})^{-\eta} = (1-\tau_t)w_te(s,j)\lambda \label{eq:2}
+\end{equation}
+\begin{equation}
+\beta\frac{1}{\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}v(dA_{t+1})}\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}\frac{\partial V_{t+1}^{s+1,j}}{\partial b_{t+1}^{s+1,j}}v (dA_{t+1})=\lambda \label{eq:3}
+\end{equation}
+\begin{equation}
+\beta\frac{1}{\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}v(dA_{t+1})}\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}\frac{\partial V_{t+1}^{s+1,j}}{\partial k_{t+1}^{s+1,j}}v(dA_{t+1})=\lambda(1+\varphi) \label{eq:4}
+\end{equation}
+where $v$ is the probability distribution of the productivity $A_{t+1}$.
+
+We apply the envelope theorem on the Bellman equation and obtain the following conditions.
+\begin{equation}
+\frac{\partial V_{t+1}^{s+1,j}}{\partial b_{t+1}^{s+1,j}} = (c_{t+1}^{s+1,j})^{-\sigma}(1+r_{t+1}^b) \label{eq:5}
+\end{equation}
+\begin{equation}
+\frac{\partial V_{t+1}^{s+1,j}}{\partial k_{t+1}^{s+1,j}} = (c_{t+1}^{s+1,j})^{-\sigma}(1+r^k_{t+1}-\delta+\varphi) \label{eq:6}
+\end{equation}
+Substituting \eqref{eq:3} and \eqref{eq:5} into \eqref{eq:1} yields
+\begin{equation}
+\begin{split}
+(c_{t}^{s,j})^{-\sigma} = \beta\frac{1}{\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}v(dA_{t+1})}\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}(c_{t+1}^{s+1,j})^{-\sigma}(1+r_{t+1}^b)v(dA_{t+1}) \label{eq:19}
+\end{split}
+\end{equation}
+Substituting \eqref{eq:4} and \eqref{eq:6} into \eqref{eq:1} yields
+\begin{equation}
+\begin{split}
+(c_{t}^{s,j})^{-\sigma} = \beta\frac{1}{\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}v(dA_{t+1})}\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}(c_{t+1}^{s+1,j})^{-\sigma}(1+r^k_{t+1}-\delta+\varphi)v(dA_{t+1}) \label{eq:20}
+\end{split}
+\end{equation}
+Combining \eqref{eq:19} and \eqref{eq:20} yields
+\begin{equation}
+	E_t(r_{t+1}^b)=E_t(r^k_{t+1})-\delta+\varphi
+\end{equation}
+Combining \eqref{eq:1} and \eqref{eq:2} yields intratemporal optimal condition between consumption and labor for $s=1,...,T^W$ as
+\begin{equation}
+c_{t}^{s,j}=\left(\frac{1}{\phi}(1-l_{t}^{s,j})^{\eta}(1-\tau_t)w_te(s,j)\right)^{\frac{1}{\sigma}} \label{eq:7}
+\end{equation}
+Substituting \eqref{eq:7} into the budget constraint yields
+\begin{equation}
+\begin{split} 
+\hspace{0em} &\left(\frac{1}{\phi}(1-l_t^{s,j})^{\eta}(1-\tau_t)w_te(s,j)\right)^{\frac{1}{\sigma}}+ b_{t+1}^{s+1,j} + k_{t+1}^{s+1,j}\\
+&=(1+r_t^b)b_{t}^{s,j}+r_t^k k_{t}^{s,j}+(1-\delta)k_{t}^{s,j}+(1-\tau_t)w_te(s,j)l_{t}^{s,j}-\varphi(k_{t+1}^{s,j}-k_{t}^{s,j})
+\end{split}
+\end{equation}
+Given all price variables, this is a monotone implicit function for labor in terms of the current and future state variables, denoted by
+\[ l_t^{s,j}=l(b_t^{s,j},k_t^{s,j},b_{t+1}^{s+1,j},k_{t+1}^{s+1,j}) \] 
+Similarly, consumption is also a monotone implicit function of the current and future state variables as
+\begin{equation}
+\begin{split} 
+c_t^{s,j}=&c(b_t^{s,j},k_t^{s,j},b_{t+1}^{s+1,j},k_{t+1}^{s+1,j})\\
+=&(1+r_t^b)b_t^{s,j}+r_t^k k_t^{s,j}+(1-\delta)k_t^{s,j}+(1-\tau_t)w_te(s,j)l_t^{s,j}\\
+&-\varphi(k_{t+1}^{s+1,j}-k_t^{s,j})- b_{t+1}^{s+1,j} - k_{t+1}^{s+1,j}
+\end{split}
+\end{equation}
+After expressing consumption and labor as functions of state variables, we can rewrite the two first-order conditions as 
+\begin{equation}
+\begin{split}
+&c(b_t^{s,j},k_t^{s,j},b_t^{s+1,j},k_t^{s+1,j})^{-\sigma} =\beta \frac{1}{\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}v(dA_{t+1})}*\\
+&  \int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}[c(b_{t+1}^{s+1,j},k_{t+1}^{s+1,j},b_{t+2}^{s+2,j},k_{t+2}^{s+2,j})]^{-\sigma}(1+r_{t+1}^b)v(dA_{t+1}) \label{eq:8}
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+&c(b_t^{s,j},k_t^{s,j},b_t^{s+1,j},k_t^{s+1,j})^{-\sigma} =\beta\frac{1}{\int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}v(dA_{t+1})}*\\
+& \int_{\mathbb{R}^+} e^{{-\gamma}{V_{t+1}^{s+1,j}}}[c(b_{t+1}^{s+1,j},k_{t+1}^{s+1,j},b_{t+2}^{s+2,j},k_{t+2}^{s+2,j})]^{-\sigma}(1+r^k_{t+1}-\delta+\varphi)v(dA_{t+1}) \label{eq:9}
+\end{split}
+\end{equation}
+We solve the household problem backwards. More specifically, $b_{t+2}^{s+2,j}$ and $k_{t+2}^{s+2,j}$ are solved in period $t+1$ and are functions of $b_{t+1}^{s+1,j}$ and $k_{t+1}^{s+1,j}$, and the value function $V_{t+1}^{s+1,j}$ is also solved in period $t+1$ and is a function of $b_{t+1}^{s+1,j}$ and $k_{t+1}^{s+1,j}$. As $b_{t}^{s,j}$ and $k_{t}^{s,j}$ are state variables given in period $t$, Equation \eqref{eq:8} is a function of $b_{t+1}^{s+1,j}$ and $k_{t+1}^{s+1,j}$. Similarly, Equation \eqref{eq:9} is a also function of $b_{t+1}^{s+1,j}$ and $k_{t+1}^{s+1,j}$. Given all price variables, we can solve $b_{t+1}^{s+1,j}$ and $k_{t+1}^{s+1,j}$ in period $t$ from these two conditions. 
+
+For retirees of age $s=T^W+1,...,T-1$, we do not have intratemporal condition (\ref{eq:7}). Therefore they only satisfy conditions (\ref{eq:19}) (\ref{eq:20}) and (\ref{eq:16}). The final cohort $s=T$ must consume all available resources, i.e., 
+\begin{equation*}
+b_{t+1}^{T+1,j} = k_{t+1}^{T+1,j} =0
+\end{equation*}
+The budget constraint for the final cohort reduces to
+\begin{equation}
+\begin{split}	
+c_{t}^{T,j}=(1+r_t^b)b_{t}^{T,j}+r_t^k k_{t}^{T,j}+(1-\delta)k_{t}^{T,j}+pen_t-\varphi(k_{t+1}^{T,j}-k_{t}^{T,j}) \label{eq:18}
+\end{split}
+\end{equation}
+The value function of the final cohort is given by 
+\begin{equation}
+V_t^{T,j} = \frac{(c_{t}^{T,j})^{1-\sigma}}{1-\sigma}
+\end{equation}
+Given all these conditions and all price variables, we can solve the household problem backwards. 
+
+
+\subsection{Firms}
+The representative firm produces output $Y_t$ using labour $L_t$ and capital $K_t$ with a Cobb-Douglas production function but is subject to stochastic productivity $A_t$ as
+\begin{eqnarray}
+Y_t=A_tK_t^\alpha L_t^{1-\alpha} \label{eq:10}
+\end{eqnarray}
+where the productivity $A_t$ follows an AR(1) process: 
+\begin{eqnarray}
+\ln A_t=\rho_A \ln A_{t-1}+\epsilon^A_t \label{eq:11}
+\end{eqnarray}
+and $\epsilon^A_t \sim N(0,\delta_A)$.
+
+The first-order conditions for firms are 
+\begin{eqnarray}
+\frac{\partial Y_t}{\partial K_t} &=& \alpha A_tK_t^{\alpha-1}L_t^{1-\alpha} = r^k+\delta \label{eq:12}\\
+\frac{\partial Y_t}{\partial L_t} &=& (1-\alpha)A_tK_t^{\alpha}L_t^{-\alpha} = w_t \label{eq:13}
+\end{eqnarray}
+
+\subsection{Government}
+The government plays two roles in the model. First, it collects seignorage revenues from the monetary authority and lump-sum transfers them to the new generation. This role does not affect the government's budget constraint. Second, it provides pensions to retirees. Besides their own private saving, old households get funds from a pay-as-you-go pension scheme. To provide pensions, the government taxes labor income from workers at a fixed rate (and there are no taxes on capital income and pensions), and this tax revenue is uniformly distributed among the retirees. To keep our attention on monetary policy, we further assume government consumption is zero. Therefore, the government budget constraint is 
+\begin{eqnarray}
+\frac{1}{n}\sum_{j=1}^{n}\sum_{s=1}^{T}\tau_tw_te(s,j)l_{t}^{s,j}= \frac{1}{n} \sum_{j=1}^{n}\sum_{s=T+1}^{T+T^R}pen_t
+\end{eqnarray}
+
+
+\section{Equilibrium conditions}
+\textbf{Definition. Equilibrium path} 
+
+Given the initial state of the economy, a recursive equilibrium is a set of policy functions $\{k(z_t), b(z_t), l(z_t), c(z_t)\}$  for the households, a set of input choices $\{K_{t+1}, L_t\}$ for the firms, a set of prices $\{w_t,r_t^b,r_t^k\}$ such that 
+\begin{enumerate}
+	\item Aggregate and individual behavior are consistent: individual consumption, effective labor supply, and capital stock sum up to their aggregate counterparts. 
+		\begin{eqnarray}
+			C_t&=& \frac{1}{n}\sum_{j=1}^{n}\sum_{s=1}^{T}c_t^{s,j}\\
+			L_t&=&\frac{1}{n} \sum_{j=1}^{n}\sum_{s=1}^{T^W}l_t^{s,j}e(s,j)\\
+			K_t&=&\frac{1}{n} \sum_{j=1}^{n}\sum_{s=1}^{T}k_t^{s,j}
+		\end{eqnarray}
+	\item Given prices $(w_t,r_t^b,r_t^k)$, the policy functions $k_{t+1}(z_t)$, $b_{t+1}(z_t)$, $l_{t}(z_t)$ and $c_{t}(z_t)$ solve the household problem (\ref{Bellman}). 
+	\item Given prices $(w_t,r_t^k)$, the firm chooses optimal factor intput.   
+	\item The government budget balances.  
+	\begin{eqnarray} \frac{1}{n}\sum_{j}^{n}\sum_{s=1}^{T^W}\tau_tw_te(s,j)l_{t}^{s,j} = \frac{1}{n} \sum_{j}^{n}\sum_{s=T^W+1}^{T}pen_t
+	\end{eqnarray}
+	\item All markets clear.
+	\begin{itemize}
+		\item Goods market clears:
+			\begin{eqnarray}
+			C_t+K_{t+1}=Y_t+(1-\delta)K_t
+			\end{eqnarray}
+		\item Bonds market clears:
+			\begin{eqnarray}
+			\frac{1}{n}\sum_{j=1}^{n}\sum_{s=1}^{T}b_t^{s,j} =0
+			\end{eqnarray}
+		\item Capital market clears:
+			\begin{eqnarray}
+			K_t^D=K_t
+			\end{eqnarray}
+		\item Labor market clears:
+			\begin{eqnarray}
+			L_t^D=L_t
+			\end{eqnarray}
+	\end{itemize}
+\end{enumerate}
+
+\textbf{Definition. Steady state} 
+
+A steady state (a long-run equilibrium) of the economy is an equilibrium path on which prices, wages, tax rates and all individual variables are constant over time and aggregate variables all grow at the rate that is the sum of the population growth rate and the productivity growth rate. 
+
+\section{Calibration}
+\section{Computation}
+
+We use the Gauss-Seidel method to calculate the equilibrium of the model. The algorithm proceeds as follows:
+\begin{enumerate}
+	\item Initialize the model.
+	\item Provide guesses for price variables such as $w$, $r^b$, $r^k$ (the two rates follow the arbitrage condition).
+	\item Solve household policy functions given prices and pension benefits.
+	\item Calculate the distribution of households over the state space. 
+	\item Aggregate household decision.
+	\item Determine tax and pension contribution rates.
+	\item Solve firm factor demand given prices. 
+	\item Calculate the difference between labor supply and demand, and adjust the guess for $w$.
+	\item Calculate the difference between capital supply and demand, and adjust the guess for $r^k$.
+	\item Calculate the difference between bonds supply and demand, and adjust the guess for $r^b$ according to the arbitrage condition (this step can be omitted).
+	\item Stop if all price variables converge (all markets clear in a steady state). Otherwise, update the guesses for price variables and go to Step 2. 
+\end{enumerate}
+
+
+\section{Baseline model}
+\subsection{Steady state}
+
+\section{Ageing model}
+\subsection{Steady state}
+
+\subsection{Transition dynamics}
+The calculation of transition dynamics follows the same logic of calculating the steady state, but requires a time index for all individual and aggregate variables and also for price variables.  
+
+\section{Conclusions}
+
+\section{References}
+
+\section{Appendix}
+
+
+\bibliography{references}
+\bibliographystyle{apacite}
+
+\end{document}
+
