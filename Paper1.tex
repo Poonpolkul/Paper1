@@ -49,7 +49,7 @@ Agents are heterogeneous in their labour productivity denoted by $e(s,j)$. On th
 \subsection{Timing of events}
 The timing of events in this economy is as follows:
 \begin{enumerate}
-	\item At the beginning of each period, households hold bonds and capital stock (through either their own decisions from last period or their endowments for new generations), and are faced with the rate of return on bonds, and the expected rate of return on capital.
+	\item At the beginning of each period, households hold bonds and capital stock (through either their own decisions from last period or their endowments for new generations).
 	\item Productivity shocks occur.
 	\item Workers supply labour and firms hire labor.
 	\item Production starts. 
@@ -74,9 +74,9 @@ U_t=u(c_t,{1-l}_t) + \beta E_t(U_{t+1})
 \end{equation}
 
 \subsubsection{Budget constraints}
-At the beginning of period $t$, a new generation of households is born without capital, $k_t^{1,j}=0$, but they can borrow from a bonds market. Existing agents of age $2\leq s\leq T$ with productivity type $j$ hold risk-free bonds $b_{t}^{s,j}$ and risky capital stock $k_{t}^{s,j}$ which are carried over from last period. 
+At the beginning of period $t$, a new generation of households is born without capital or bonds, $k_t^{1,j}=0$ and $b_t^{1,j}=0$. Existing agents of age $2\leq s\leq T$ with productivity type $j$ hold risk-free bonds $b_{t}^{s,j}$ and risky capital stock $k_{t}^{s,j}$ which are carried over from last period. 
 
-In each period, households of age $s\leq T^W$ supply labour in a competitive labour market given their labour productivity, and pay labour income taxes at a rate $\tau_t$, while households of age $T^W<s\leq T$ completely retire but they receive pensions from the government. All households can borrow and lend risk-free bonds whose net supply is zero in a competitive bonds market, and receive bonds income each period. Besides, all households can invest capital whose net supply is positive and rent capital to firms for production, and receive capital income while capital depreciates at a constant rate $\delta$ each period.  
+In each period, households of age $s\leq T^W$ supply labour in a competitive labour market given their labour productivity, and pay labour income taxes at a rate $\tau_t$, while households of age $T^W<s\leq T$ completely retire but they receive pensions from the government. All households can borrow and lend risk-free bonds whose net supply is zero in a competitive bonds market, and receive bonds income each period. Besides, all households can invest capital whose net supply is positive, and receive capital income $\pi_t^{s,j}$ while capital depreciates at a constant rate $\delta$ each period where the capital income is defined in Section 2.4.
 
 At the end of each period, the wealth of each household includes bonds (bonds and their returns) and capital (capital returns plus undepreciated capital). Moreover, workers receive after-tax income while retirees receive pensions. 
 
@@ -86,16 +86,17 @@ Given this setup, the budget constraint for workers of age $s=1,..., T^W$ with p
 \begin{equation}
 \begin{split} 
 c_{t}^{s,j}+ b_{t+1}^{s+1,j} + k_{t+1}^{s+1,j}=&
-(1+r_t^b)b_{t}^{s,j}+r_t^k k_{t}^{s,j}+(1-\delta)k_{t}^{s,j}\\
+(1+r_t^b)b_{t}^{s,j}+\pi_t^{s,j}+(1-\delta)k_{t}^{s,j}\\
 &+(1-\tau_t)w_te(s,j)l_{t}^{s,j}-\varphi(k_{t+1}^{s+1,j}-k_{t}^{s,j}) \label{eq:15}
 \end{split}
 \end{equation}
 The budget constraint for retirees of age $s=T^W+1,...,T$ is 
 \begin{equation}
 \begin{split} 
-c_{t}^{s,j}+ b_{t+1}^{s+1,j} + k_{t+1}^{s+1,j}=
+c_{t}^{s,j}+ b_{t+1}^{s+1,j} + k_{t+1}^{s+1,j}=&
 (1+r_t^b)b_{t}^{s,j}
-+r_t^k k_{t}^{s,j}+(1-\delta)k_{t}^{s,j}+pen_t-\varphi(k_{t+1}^{s+1,j}-k_{t}^{s,j}) \label{eq:16}
++\pi_t^{s,j}+(1-\delta)k_{t}^{s,j}\\
+&+pen_t-\varphi(k_{t+1}^{s+1,j}-k_{t}^{s,j}) \label{eq:16}
 \end{split}
 \end{equation}
 
@@ -224,11 +225,14 @@ where the productivity $A_t$ follows an AR(1) process:
 \end{eqnarray}
 and $\epsilon^A_t \sim N(0,\delta_A)$.
 
-The first-order conditions for firms are 
+The capital stock is determined by households directly. The firm only decides labor employed. The first-order condition for labor is  
 \begin{eqnarray}
-\frac{\partial Y_t}{\partial K_t} &=& \alpha A_tK_t^{\alpha-1}L_t^{1-\alpha} = r^k+\delta \label{eq:12}\\
-\frac{\partial Y_t}{\partial L_t} &=& (1-\alpha)A_tK_t^{\alpha}L_t^{-\alpha} = w_t \label{eq:13}
+(1-\alpha)A_tK_t^{\alpha}L_t^{-\alpha} &=& w_t \label{eq:13}
 \end{eqnarray}
+The aggregate capital income is defined as
+\[ \Pi_t= Y_t-w_tL_t\]
+This aggregate capital income is distributed across individuals proportionally to their captial stock so that each individual's capital income $\pi_t^{s,j}$ is
+\[\pi_t^{s,j}=\frac{k_{t}^{s,j}}{K_t}(Y_t-w_tL_t) \]
 
 \subsection{Government}
 The government plays two roles in the model. First, it collects seignorage revenues from the monetary authority and lump-sum transfers them to the new generation. This role does not affect the government's budget constraint. Second, it provides pensions to retirees. Besides their own private saving, old households get funds from a pay-as-you-go pension scheme. To provide pensions, the government taxes labor income from workers at a fixed rate (and there are no taxes on capital income and pensions), and this tax revenue is uniformly distributed among the retirees. To keep our attention on monetary policy, we further assume government consumption is zero. Therefore, the government budget constraint is 
@@ -240,7 +244,7 @@ The government plays two roles in the model. First, it collects seignorage reven
 \section{Equilibrium conditions}
 \textbf{Definition. Equilibrium path} 
 
-Given the initial state of the economy, a recursive equilibrium is a set of policy functions $\{k(z_t), b(z_t), l(z_t), c(z_t)\}$  for the households, a set of input choices $\{K_{t+1}, L_t\}$ for the firms, a set of prices $\{w_t,r_t^b,r_t^k\}$ such that 
+Given the initial state of the economy, a recursive equilibrium is a set of policy functions $\{k(z_t), b(z_t), l(z_t), c(z_t)\}$  for the households, a set of input choices $\{K_{t+1}, L_t\}$ for the firms, a set of prices $\{w_t,r_t^b\}$ such that 
 \begin{enumerate}
 	\item Aggregate and individual behavior are consistent: individual consumption, effective labor supply, and capital stock sum up to their aggregate counterparts. 
 		\begin{eqnarray}
@@ -262,10 +266,6 @@ Given the initial state of the economy, a recursive equilibrium is a set of poli
 		\item Bonds market clears:
 			\begin{eqnarray}
 			\frac{1}{n}\sum_{j=1}^{n}\sum_{s=1}^{T}b_t^{s,j} =0
-			\end{eqnarray}
-		\item Capital market clears:
-			\begin{eqnarray}
-			K_t^D=K_t
 			\end{eqnarray}
 		\item Labor market clears:
 			\begin{eqnarray}
@@ -291,8 +291,7 @@ We use the Gauss-Seidel method to calculate the equilibrium of the model. The al
 	\item Determine tax and pension contribution rates.
 	\item Solve firm factor demand given prices. 
 	\item Calculate the difference between labor supply and demand, and adjust the guess for $w$.
-	\item Calculate the difference between capital supply and demand, and adjust the guess for $r^k$.
-	\item Calculate the difference between bonds supply and demand, and adjust the guess for $r^b$ according to the arbitrage condition (this step can be omitted).
+	\item Calculate the difference between bonds supply and demand, and adjust the guess for $r^b$ according to the arbitrage condition.
 	\item Stop if all price variables converge (all markets clear in a steady state). Otherwise, update the guesses for price variables and go to Step 2. 
 \end{enumerate}
 
